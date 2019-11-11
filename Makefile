@@ -19,10 +19,8 @@ depend:
 
 d2h_objs = d2h.o
 
-.for t in $(targets)
-toclean += $t $($t_objs)
-$t_srcs += $($t_objs:.o=.c)
-depends += $($t_srcs)
-$t: $($t_deps) $($t_objs)
-	$(CC) $(LDFLAGS) -o $@ $($t_objs) $($t_ldflags) $($t_libs)
-.endfor
+toclean += d2h $(d2h_objs)
+d2h_srcs += $(d2h_objs:.o=.c)
+depends += $(d2h_srcs)
+d2h: $(d2h_deps) $(d2h_objs)
+	$(CC) $(LDFLAGS) -o $@ $(d2h_objs) $(d2h_ldflags) $(d2h_libs)
