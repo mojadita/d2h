@@ -1,2 +1,6 @@
 d2h
 *.o
+.depend
+core
+*.core
+make.err
