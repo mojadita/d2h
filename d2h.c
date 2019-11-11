@@ -32,6 +32,16 @@ do_usage(char *progname)
 {
 	fprintf(stderr,
 		"Usage: %1$s [ options ... ] [ file ... ]\n"
+		"Options:\n"
+		"  -m mode.  The possible modes are strings in the set \n"
+		"     {\"flt-le\", \"flt-be\", \"dbl-le\", \"dbl-be\"} meaning\n"
+		"     dbl to use double numbers and flt to use float\n"
+		"     number.  'le' means little-endian while 'be' means\n"
+		"     big-endian numbers.  Default is \"flt-be\".\n"
+		"  -v Be verbose.  Program prints to 'stderr' input filenames,\n"
+		"     as they are processed.\n"
+		"  -?, -h\n"
+		"     Help.  Shows this help screen.\n"
 		"\n",
 		progname);
 } /* do usage */
@@ -179,9 +189,10 @@ int main(int argc, char **argv)
 	int opt;
 	char *mode = DEFAULT_MODE;
 
-	while ((opt = getopt(argc, argv, "?m:v")) != EOF) {
+	while ((opt = getopt(argc, argv, "?hm:v")) != EOF) {
 		switch (opt) {
-		case '?': do_usage(argv[0]); exit(EXIT_USAGE); break;
+		case '?': case 'h':
+			do_usage(argv[0]); exit(EXIT_USAGE); 	   break;
         case 'm': mode = optarg;                       break;
 		case 'v': config_flags |= FLAG_VERBOSE; 	   break;
 		} /* switch */
