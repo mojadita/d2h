@@ -41,7 +41,7 @@ print_le(const struct profile *prof, const char *b, size_t sz)
 {
 	char *sep = "";
 	while(sz--) {
-		printf("%s%02x", sep, *b++);
+		printf("%s%02hhx", sep, *b++);
 		sep = " ";
 	}
 	puts("");
@@ -53,7 +53,7 @@ print_be(const struct profile *prof, const char *b, size_t sz)
 	char *sep = "";
 	b += sz;
 	while(sz--) {
-		printf("%s%02x", sep, *--b);
+		printf("%s%02hhx", sep, *--b);
 		sep = " ";
 	}
 	puts("");
@@ -91,10 +91,10 @@ decode(const struct profile *prof, const char *line, char **b)
 	case 0: case 1: /* a single number, or no number at all.
 					 * Can be a floating point */
 		if (prof->flags & FLAG_FLOAT) {
-			res = sscanf(line, "%g", (float *)b);
+			res = sscanf(line, "%g", (float *)*b);
 			return res == 1 ? FLAG_FLOAT : -1;
 		} else {
-			res = sscanf(line, "%lg", (double *)b);
+			res = sscanf(line, "%lg", (double *)*b);
 			return res == 1 ? 0 : -1;
 		}
 	case sizeof(float): case sizeof(double):

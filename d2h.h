@@ -23,7 +23,7 @@
 #define MODE_DOUBLE_LE  "dbl-le"
 #define MODE_FLOAT_LE   "flt-le"
 #define MODE_DOUBLE_BE  "dbl-be"
-#define MODE_FLOAT_BE   "flt_be"
+#define MODE_FLOAT_BE   "flt-be"
 
 #define DEFAULT_MODE    MODE_FLOAT_BE
 
