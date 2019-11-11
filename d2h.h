@@ -18,7 +18,7 @@
 								  * or sizeof(double) */
 
 #define FMT_DBL			"%.17lg\n"
-#define FMT_FLT			"%.6g\n"
+#define FMT_FLT			"%.8g\n"
 
 #define MODE_DOUBLE_LE  "dbl-le"
 #define MODE_FLOAT_LE   "flt-le"
